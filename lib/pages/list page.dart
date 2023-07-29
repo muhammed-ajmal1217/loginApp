@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter_application_1/pages/login.dart';
 
 class ListPage extends StatelessWidget {
@@ -8,12 +10,12 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar
-      (title: Text('List'),
+      (title: const Text('List'),
       backgroundColor: Colors.black,
       actions: [
         IconButton(onPressed: (){
           signOut(context);
-        }, icon: Icon(Icons.exit_to_app)),
+        }, icon: const Icon(Icons.exit_to_app)),
       ],
       
       ),
@@ -22,8 +24,8 @@ class ListPage extends StatelessWidget {
           itemBuilder: (ctx,index) {
            return ListTile(
               title:Text('Person$index'),
-              subtitle: Text('Hello i am using whats app...'),
-              leading: CircleAvatar(
+              subtitle: const Text('Hello i am using whats app...'),
+              leading: const CircleAvatar(
                 radius: 30,
                 backgroundColor: Color.fromARGB(255, 58, 58, 58),
 
@@ -34,14 +36,37 @@ class ListPage extends StatelessWidget {
               );
           },
           separatorBuilder: (ctx,index){
-            return Divider();
+            return const Divider();
           }, 
           itemCount: 20,)),
       
       );
   }
   signOut(BuildContext ctx){
-    Navigator.of(ctx).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx1)=>ScreenLogin()), (route) => false);
+    Navigator.of(ctx).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx1)=>const ScreenLogin()), (route) => false);
+  }
+  // Future<void>checkUserLoggedinlist(BuildContext context)async{
+  //   final _sharedPrefs = await SharedPreferences.getInstance();
+  //   final _userLoggedinList=_sharedPrefs.getBool(SAVE_KEY_NAME);
+  //   if (_userLoggedinList==null||_userLoggedinList==false){
+  //     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx1)=>ScreenSplash()), (route) => false);
+
+  //   }else{
+  //   final _sharedPrefs = await SharedPreferences.getInstance();
+  //   await _sharedPrefs.clear();
+  //   }
+
+
+  // }
+
+  // void moveFront(BuildContext ctx)async{
+
+  //   final _sharedPrefs = await SharedPreferences.getInstance();
+  //   await _sharedPrefs.clear();
+
+    
+  //   Navigator.of(ctx).pushAndRemoveUntil(
+  //     MaterialPageRoute(builder: (ctx) => HomePage()),(route)=>false);
+    
   }
   
-}
